@@ -3,9 +3,9 @@ import streamlit as st
 # Objetivos por zona y tienda
 objetivos = {
     "ZONA NICOLÁS": {
-        "Alicante": {"ventas": 45, "compras": 40, "financiaciones": 40000, "garantias": 22250},
-        "Murcia": {"ventas": 35, "compras": 25, "financiaciones": 36000, "garantias": 15600},
-        "Valencia": {"ventas": 65, "compras": 50, "financiaciones": 52000, "garantias": 20000},
+        "Alicante": {"ventas": 45, "compras": 40, "financiaciones": 40000, "garantias": 13500},
+        "Murcia": {"ventas": 35, "compras": 25, "financiaciones": 36000, "garantias": 9625},
+        "Valencia": {"ventas": 65, "compras": 45, "financiaciones": 52000, "garantias": 17875},
         "Paterna": {"ventas": 30, "compras": 20, "financiaciones": 27000, "garantias": 13400},
     },
 }

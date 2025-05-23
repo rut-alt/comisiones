@@ -22,9 +22,9 @@ def calcular_comision_por_unidad(realizado, objetivo):
     elif porcentaje < 0.90:
         return 2, realizado * 2, "85%-89%"
     elif porcentaje < 1.00:
-        return 3, realizado * 3, "90%-99%"
+        return 3, realizado * 3, "90%-100%"
     else:
-        return 3.5, realizado * 3.5, ">= 100%"
+        return 3.5, realizado * 3.5, "> 100%"
 
 # Comisión fija por tramos (garantías premium, financiaciones)
 def calcular_comision_fija(realizado, objetivo, tramos):
@@ -36,9 +36,9 @@ def calcular_comision_fija(realizado, objetivo, tramos):
     elif porcentaje < 0.90:
         return tramos[0], "85%-89%"
     elif porcentaje < 1.00:
-        return tramos[1], "90%-99%"
+        return tramos[1], "90%-100%"
     else:
-        return tramos[2], ">= 100%"
+        return tramos[2], "> 100%"
 
 st.title("Comisiones por Tienda - Zona Luis")
 

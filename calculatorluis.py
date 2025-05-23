@@ -3,12 +3,12 @@ import streamlit as st
 # Objetivos por zona y tienda
 objetivos = {
     "ZONA LUIS": {
-        "Badalona": {"ventas": 30, "compras": 25, "financiaciones": 30000, "garantias": 13350},
-        "Girona": {"ventas": 25, "compras": 15, "financiaciones": 25000, "garantias": 11200},
-        "Lleida": {"ventas": 20, "compras": 12, "financiaciones": 20000, "garantias": 8900},
-        "Llica de Valls": {"ventas": 30, "compras": 25, "financiaciones": 30000, "garantias": 13350},
-        "Manresa": {"ventas": 30, "compras": 15, "financiaciones": 30000, "garantias": 13350},
-        "San Boi": {"ventas": 70, "compras": 40, "financiaciones": 70000, "garantias": 31150},
+        "Badalona": {"ventas": 30, "compras": 25, "financiaciones": 30000, "garantias": 9000},
+        "Girona": {"ventas": 25, "compras": 15, "financiaciones": 25000, "garantias": 7500},
+        "Lleida": {"ventas": 20, "compras": 12, "financiaciones": 20000, "garantias": 6000},
+        "Llica de Valls": {"ventas": 30, "compras": 25, "financiaciones": 30000, "garantias": 9000},
+        "Manresa": {"ventas": 30, "compras": 15, "financiaciones": 30000, "garantias": 9000},
+        "San Boi": {"ventas": 70, "compras": 40, "financiaciones": 70000, "garantias": 21000},
     },
 }
 
@@ -67,9 +67,22 @@ for tienda, objetivos_tienda in objetivos[zona].items():
     st.markdown(f"**Compras**: {compras_real}/{objetivos_tienda['compras']} → {pct_c} → {tarifa_c}€/compra → **{com_c}€**")
     st.markdown(f"**Financiaciones**: {fin_real}/{objetivos_tienda['financiaciones']} → {pct_f} → Comisión fija: **{com_f}€**")
     st.markdown(f"**Garantías Premium**: {garantias_real}€ / {objetivos_tienda['garantias']}€ → {pct_g} → Comisión fija: **{com_g}€**")
-    
+
+    # Cálculo de lo que falta para alcanzar el 100%
+    faltan_ventas = max(0, objetivos_tienda["ventas"] - ventas_real)
+    faltan_compras = max(0, objetivos_tienda["compras"] - compras_real)
+    faltan_fin = max(0, objetivos_tienda["financiaciones"] - fin_real)
+    faltan_garantias = max(0, objetivos_tienda["garantias"] - garantias_real)
+
+    st.warning(
+        f"🔄 Te faltan **{faltan_ventas} ventas**, **{faltan_compras} compras**, "
+        f"**{faltan_fin}€ en financiaciones** y **{faltan_garantias}€ en garantías** "
+        "para llegar al 100% de tus objetivos en esta tienda."
+    )
+
     st.info(f"💰 Comisión total en {tienda}: **{total_tienda}€**")
     st.divider()
 
 # Total general
 st.success(f"🏁 **Comisión total acumulada en todas las tiendas de {zona}: {total_general}€**")
+

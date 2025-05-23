@@ -1,5 +1,24 @@
 import streamlit as st
 
+# Inicializa las claves de sesión si no existen
+if "reset" not in st.session_state:
+    st.session_state.reset = False
+
+# Función para resetear campos
+def reset_campos():
+    for key in list(st.session_state.keys()):
+        if key.endswith("_ventas") or key.endswith("_compras") or key.endswith("_fin") or key.endswith("_garantias"):
+            st.session_state[key] = 0
+    st.session_state.reset = True
+
+# Título y botón de reinicio
+col1, col2 = st.columns([4, 1])
+with col1:
+    st.title("Comisiones por Tienda - Zona David")
+with col2:
+    if st.button("🧹 Borrar registros"):
+        reset_campos()
+
 # Objetivos por zona y tienda
 objetivos = {
     "ZONA DAVID": {
@@ -39,8 +58,6 @@ def calcular_comision_fija(realizado, objetivo, tramos):
     else:  # porcentaje > 100%
         return tramos[2], "> 100%"
 
-st.title("Comisiones por Tienda - Zona David")
-
 zona = "ZONA DAVID"
 total_general = 0
 
@@ -49,7 +66,7 @@ for tienda, objetivos_tienda in objetivos[zona].items():
     
     ventas_real = st.number_input(f"Ventas realizadas en {tienda}", min_value=0, step=1, key=f"{tienda}_ventas")
     compras_real = st.number_input(f"Compras realizadas en {tienda}", min_value=0, step=1, key=f"{tienda}_compras")
-    fin_real = st.number_input(f"Financiaciones realizadas en {tienda}", min_value=0, step=1, key=f"{tienda}_fin")
+    fin_real = st.number_input(f"Financiaciones realizadas en {tienda}", min_value=0, step=100, key=f"{tienda}_fin")
     garantias_real = st.number_input(f"€ Garantías Premium vendidas en {tienda}", min_value=0, step=100, key=f"{tienda}_garantias")
 
     # Cálculo de comisiones

@@ -1,5 +1,24 @@
 import streamlit as st
 
+# Inicializa las claves de sesión si no existen
+if "reset" not in st.session_state:
+    st.session_state.reset = False
+
+# Función para resetear campos
+def reset_campos():
+    for key in list(st.session_state.keys()):
+        if key.endswith("_ventas") or key.endswith("_compras") or key.endswith("_fin") or key.endswith("_garantias"):
+            st.session_state[key] = 0
+    st.session_state.reset = True
+
+# Título y botón
+col1, col2 = st.columns([4, 1])
+with col1:
+    st.title("Comisiones por Tienda - Zona Luis")
+with col2:
+    if st.button("🧹 Borrar registros"):
+        reset_campos()
+
 # Objetivos por zona y tienda
 objetivos = {
     "ZONA LUIS": {
@@ -23,7 +42,7 @@ def calcular_comision_por_unidad(realizado, objetivo):
         return 2, realizado * 2, "85%-89%"
     elif porcentaje <= 1.00:
         return 3, realizado * 3, "90%-100%"
-    else:  # porcentaje > 100%
+    else:
         return 3.5, realizado * 3.5, "> 100%"
 
 # Comisión fija por tramos (financiaciones y garantías premium)
@@ -37,10 +56,8 @@ def calcular_comision_fija(realizado, objetivo, tramos):
         return tramos[0], "85%-89%"
     elif porcentaje <= 1.00:
         return tramos[1], "90%-100%"
-    else:  # porcentaje > 100%
+    else:
         return tramos[2], "> 100%"
-
-st.title("Comisiones por Tienda - Zona Luis")
 
 zona = "ZONA LUIS"
 total_general = 0
@@ -53,7 +70,6 @@ for tienda, objetivos_tienda in objetivos[zona].items():
     fin_real = st.number_input(f"Financiaciones realizadas en {tienda}", min_value=0, step=1, key=f"{tienda}_fin")
     garantias_real = st.number_input(f"€ Garantías Premium vendidas en {tienda}", min_value=0, step=100, key=f"{tienda}_garantias")
 
-    # Cálculo de comisiones
     tarifa_v, com_v, pct_v = calcular_comision_por_unidad(ventas_real, objetivos_tienda["ventas"])
     tarifa_c, com_c, pct_c = calcular_comision_por_unidad(compras_real, objetivos_tienda["compras"])
     com_f, pct_f = calcular_comision_fija(fin_real, objetivos_tienda["financiaciones"], [100, 200, 300])
@@ -62,13 +78,11 @@ for tienda, objetivos_tienda in objetivos[zona].items():
     total_tienda = com_v + com_c + com_f + com_g
     total_general += total_tienda
 
-    # Mostrar resultados
     st.markdown(f"**Ventas**: {ventas_real}/{objetivos_tienda['ventas']} → {pct_v} → {tarifa_v}€/venta → **{com_v}€**")
     st.markdown(f"**Compras**: {compras_real}/{objetivos_tienda['compras']} → {pct_c} → {tarifa_c}€/compra → **{com_c}€**")
     st.markdown(f"**Financiaciones**: {fin_real}/{objetivos_tienda['financiaciones']} → {pct_f} → Comisión fija: **{com_f}€**")
     st.markdown(f"**Garantías Premium**: {garantias_real}€ / {objetivos_tienda['garantias']}€ → {pct_g} → Comisión fija: **{com_g}€**")
 
-    # Cálculo de lo que falta para alcanzar el 100%
     faltan_ventas = max(0, objetivos_tienda["ventas"] - ventas_real)
     faltan_compras = max(0, objetivos_tienda["compras"] - compras_real)
     faltan_fin = max(0, objetivos_tienda["financiaciones"] - fin_real)
@@ -83,6 +97,6 @@ for tienda, objetivos_tienda in objetivos[zona].items():
     st.info(f"💰 Comisión total en {tienda}: **{total_tienda}€**")
     st.divider()
 
-# Total general
 st.success(f"🏁 **Comisión total acumulada en todas las tiendas de {zona}: {total_general}€**")
+
 

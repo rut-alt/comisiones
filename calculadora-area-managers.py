@@ -4,50 +4,53 @@ import streamlit as st
 st.markdown(
     """
     <style>
-        /* Fondo blanco y texto general negro */
+        /* Fondo blanco general y texto negro */
         .stApp, .block-container, body {
             background-color: white !important;
             color: black !important;
         }
 
-        /* Textos generales en negro */
         h1, h2, h3, h4, h5, h6, p, label, div, span {
             color: black !important;
         }
 
-        /* Campos de entrada visibles en negro */
-        .stNumberInput, .stRadio, .stSelectbox {
-            color: black !important;
-        }
-
-        /* Expander claro */
-        div[data-testid="stExpander"] div[role="button"] {
-            background-color: #f2f2f2 !important;
-            color: black !important;
-        }
-
-        /* Botones con fondo azul y texto blanco */
+        /* Estilo de los botones */
         .stButton > button {
-            background-color: #0f62fe !important;
+            background-color: #0f62fe !important; /* azul IBM */
             color: white !important;
             border: none;
             border-radius: 5px;
             padding: 0.5em 1em;
         }
 
-        /* Selectbox seleccionado: fondo azul, texto blanco */
+        /* Caja del selectbox: fondo blanco, texto azul */
         div[data-baseweb="select"] > div {
-            background-color: #0f62fe !important;
-            color: white !important;
-            border-radius: 5px;
+            background-color: white !important;
+            color: #0f62fe !important;
+            border: 1px solid #0f62fe !important;
+            border-radius: 6px !important;
             padding: 0.3em 0.8em;
         }
 
+        /* Texto del valor seleccionado */
         div[data-baseweb="select"] span {
-            color: white !important;
+            color: #0f62fe !important;
+            font-weight: bold;
         }
 
-        /* Alertas con texto negro */
+        /* Opciones del menú desplegable */
+        div[role="listbox"] > div {
+            color: black !important;
+            background-color: white !important;
+        }
+
+        /* Expander */
+        div[data-testid="stExpander"] div[role="button"] {
+            background-color: #f2f2f2 !important;
+            color: black !important;
+        }
+
+        /* Alertas */
         .stAlert {
             color: black !important;
         }

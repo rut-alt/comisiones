@@ -23,35 +23,35 @@ st.markdown(
             padding: 0.5em 1em;
         }
 
-        /* Selectbox principal: fondo blanco, texto azul */
+        /* Selectbox: fondo blanco y texto blanco */
         div[data-baseweb="select"] > div {
             background-color: white !important;
-            color: #0f62fe !important;
+            color: white !important;
             border: 1px solid #0f62fe !important;
             border-radius: 6px !important;
             padding: 0.3em 0.8em;
             font-weight: bold;
         }
 
-        /* Texto del valor seleccionado */
+        /* Texto dentro del selectbox */
         div[data-baseweb="select"] span {
-            color: #0f62fe !important;
+            color: white !important;
         }
 
         /* Opciones desplegables */
         div[role="listbox"] {
-            background-color: white !important;
-            color: black !important;
+            background-color: #0f62fe !important;
+            color: white !important;
         }
 
         div[role="option"] {
-            background-color: white !important;
-            color: #0f62fe !important;
+            background-color: #0f62fe !important;
+            color: white !important;
             font-weight: bold;
         }
 
         div[role="option"]:hover {
-            background-color: #e6f0ff !important;
+            background-color: #0053d6 !important;
         }
 
         /* Expander */
@@ -60,7 +60,7 @@ st.markdown(
             color: black !important;
         }
 
-        /* Radio buttons y otros */
+        /* Otros inputs */
         .stRadio, .stNumberInput, .stSelectbox {
             color: black !important;
         }
@@ -73,7 +73,6 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
-
 
 # ---------- ESTADO ----------------------------------------------------------
 if "reset" not in st.session_state:
@@ -139,7 +138,7 @@ objetivos_por_zona = {
         "GIJON": {}, "A CORUÑA": {}, "RIVAS": {}, "ALCOBENDAS": {},
         "TORREJON": {}, "VALLADOLID": {}, "VILLALBA": {},
     },
-    "ZONA OSCR": {
+    "ZONA OSCAR": {
         "PAMPLONA": {}, "BILBAO": {}, "SAN SEBASTIAN": {}, "FONTELLAS": {}, "ZARAGOZA": {},
     }
 }

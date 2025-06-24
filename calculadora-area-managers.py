@@ -109,7 +109,7 @@ objetivos_por_zona = {
         "VALLADOLID":  {"entregas":0,"compras":0,"financiaciones":0,"garantias":0},
         "VILLALBA":    {"entregas":0,"compras":0,"financiaciones":0,"garantias":0},
     },
-    "ZONA OSCAR": {
+    "ZONA OSCR": {
         "PAMPLONA":        {"entregas":0,"compras":0,"financiaciones":0,"garantias":0},
         "BILBAO":          {"entregas":0,"compras":0,"financiaciones":0,"garantias":0},
         "SAN SEBASTIAN":   {"entregas":0,"compras":0,"financiaciones":0,"garantias":0},
@@ -185,5 +185,4 @@ for tienda, objetivos_defecto in objetivos_por_zona[zona_seleccionada].items():
 
 # ----------  TOTAL GENERAL  -------------------------------------------------
 st.success(f"🏁 **Comisión total en {zona_seleccionada}: {total_general} €**")
-
 

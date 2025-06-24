@@ -4,7 +4,7 @@ import streamlit as st
 st.markdown(
     """
     <style>
-        /* Fondo blanco general y texto negro */
+        /* Fondo general blanco y texto negro */
         .stApp, .block-container, body {
             background-color: white !important;
             color: black !important;
@@ -14,39 +14,54 @@ st.markdown(
             color: black !important;
         }
 
-        /* Estilo de los botones */
+        /* Botones azules con texto blanco */
         .stButton > button {
-            background-color: #0f62fe !important; /* azul IBM */
+            background-color: #0f62fe !important;
             color: white !important;
             border: none;
             border-radius: 5px;
             padding: 0.5em 1em;
         }
 
-        /* Caja del selectbox: fondo blanco, texto azul */
+        /* Selectbox principal: fondo blanco, texto azul */
         div[data-baseweb="select"] > div {
             background-color: white !important;
             color: #0f62fe !important;
             border: 1px solid #0f62fe !important;
             border-radius: 6px !important;
             padding: 0.3em 0.8em;
+            font-weight: bold;
         }
 
         /* Texto del valor seleccionado */
         div[data-baseweb="select"] span {
             color: #0f62fe !important;
+        }
+
+        /* Opciones desplegables */
+        div[role="listbox"] {
+            background-color: white !important;
+            color: black !important;
+        }
+
+        div[role="option"] {
+            background-color: white !important;
+            color: #0f62fe !important;
             font-weight: bold;
         }
 
-        /* Opciones del menú desplegable */
-        div[role="listbox"] > div {
-            color: black !important;
-            background-color: white !important;
+        div[role="option"]:hover {
+            background-color: #e6f0ff !important;
         }
 
         /* Expander */
         div[data-testid="stExpander"] div[role="button"] {
             background-color: #f2f2f2 !important;
+            color: black !important;
+        }
+
+        /* Radio buttons y otros */
+        .stRadio, .stNumberInput, .stSelectbox {
             color: black !important;
         }
 
@@ -58,6 +73,7 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+
 
 # ---------- ESTADO ----------------------------------------------------------
 if "reset" not in st.session_state:

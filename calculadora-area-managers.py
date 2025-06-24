@@ -109,7 +109,7 @@ objetivos_por_zona = {
         "VALLADOLID":  {"entregas":0,"compras":0,"financiaciones":0,"garantias":0},
         "VILLALBA":    {"entregas":0,"compras":0,"financiaciones":0,"garantias":0},
     },
-    "ZONA OSCR": {
+    "ZONA OSCAR": {
         "PAMPLONA":        {"entregas":0,"compras":0,"financiaciones":0,"garantias":0},
         "BILBAO":          {"entregas":0,"compras":0,"financiaciones":0,"garantias":0},
         "SAN SEBASTIAN":   {"entregas":0,"compras":0,"financiaciones":0,"garantias":0},

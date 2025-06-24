@@ -1,14 +1,42 @@
 import streamlit as st
 
-# Fondo blanco con CSS
+# Fondo blanco + texto negro + botones con texto blanco
 st.markdown(
     """
     <style>
         .stApp, .block-container, body {
-            background-color: white;
+            background-color: white !important;
+            color: black !important;
         }
+
+        /* Texto general en negro */
+        h1, h2, h3, h4, h5, h6, p, label, div, span {
+            color: black !important;
+        }
+
+        /* Inputs visibles */
+        .stNumberInput, .stRadio, .stSelectbox {
+            color: black !important;
+        }
+
+        /* Expander visible */
         div[data-testid="stExpander"] div[role="button"] {
-            background-color: #f9f9f9;
+            background-color: #f2f2f2 !important;
+            color: black !important;
+        }
+
+        /* Botones con texto blanco */
+        .stButton > button {
+            background-color: #0f62fe !important;  /* Azul IBM por ejemplo */
+            color: white !important;
+            border: none;
+            border-radius: 5px;
+            padding: 0.5em 1em;
+        }
+
+        /* Mensajes de éxito, advertencia, etc. con texto oscuro */
+        .stAlert {
+            color: black !important;
         }
     </style>
     """,
@@ -145,3 +173,4 @@ for tienda, objetivos_defecto in objetivos_por_zona[zona_seleccionada].items():
 
 # Total final
 st.success(f"🏁 **Comisión total en {zona_seleccionada}: {total_general}€**")
+

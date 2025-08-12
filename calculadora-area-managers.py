@@ -113,10 +113,10 @@ def calcular_comision_fija(realizado, objetivo, tramos):
 
 # ---------- OBJETIVOS POR ZONA ----------------------------------------------
 objetivos_por_zona = {
-    "ZONA NICOLÁS": {
-        "Alicante": {"entregas": 45, "compras": 40, "financiaciones": 40000, "garantias": 13500},
-        "Murcia": {"entregas": 35, "compras": 25, "financiaciones": 36000, "garantias": 9625},
-        "Valencia": {"entregas": 65, "compras": 45, "financiaciones": 52000, "garantias": 17875},
+    "ZONA COMERCIAL1": {
+        "Alicante": {"entregas": 45, "compras": 40, "financiaciones": 3000, "garantias": 13500},
+        "Murcia": {"entregas": 35, "compras": 25, "financiaciones": 45667, "garantias": 9625},
+        "Valencia": {"entregas": 65, "compras": 45, "financiaciones": 34444, "garantias": 17875},
         "Paterna": {"entregas": 30, "compras": 20, "financiaciones": 27000, "garantias": 13400},
     },
     "ZONA LUIS": {
@@ -213,4 +213,5 @@ for tienda, objetivos_defecto in objetivos_por_zona[zona_seleccionada].items():
 
 # ---------- TOTAL GENERAL ---------------------------------------------------
 st.success(f"🏁 **Comisión total en {zona_seleccionada}: {total_general}€**")
+
 
